@@ -1,0 +1,44 @@
+<launch>
+
+    <arg name="camera" default="camera" />
+
+    <node name="skimap_live" output="screen" pkg="skimap_ros" type="skimap_live">
+        
+        <!-- Generic Parameters -->
+        <param name="hz" value="10"/>
+
+        <!-- Topics Parameters -->
+        <param name="camera_rgb_topic" value="/mynteye/left/image_raw"/>
+        <param name="camera_depth_topic" value="/mynteye/depth/image_raw"/>
+        
+        <!-- Cloud parameters  -->
+        <param name="point_cloud_downscale" value="2"/>
+
+        <!-- RGB-D Parameters -->
+        <param name="fx" value="361.01160649895866"/>
+        <param name="fy" value="362.245966172277"/>
+        <param name="cx" value="374.9366031205481"/>
+        <param name="cy" value="226.39489224214495"/>
+        <param name="rows" value="480"/>
+        <param name="cols" value="752"/>
+        <param name="camera_distance_max" value="3"/>
+        <param name="camera_distance_min" value="0.45"/>
+        
+        <!-- Mapping parameters -->
+        <param name="base_frame_name" value="world"/>
+        <param name="camera_frame_name" value="camera"/>
+        <param name="map_resolution" value="0.05"/>
+        <param name="min_voxel_weight" value="100"/>
+        <param name="ground_level" value="0.05"/>
+        <param name="agent_height" value="1.5"/>
+        <param name="enable_chisel" value="false"/>
+        <param name="chisel_step" value="30"/>
+        <param name="height_color" value="true"/>
+
+        <!--<param name="use_sim_time" value="true"/>-->
+
+    </node>
+
+    <!--<node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find skimap_ros)/rviz/skimap_MYNT.rviz" /> -->
+
+</launch>
